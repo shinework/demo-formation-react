@@ -1,6 +1,6 @@
 {
   "messages": [
-    { "username": "ThibZ", "message": "Hello there ! :)", "sentAt": "2019-10-29T10:31:53.377Z" },
-    { "username": "bob", "message": "J'ai faim :hamburger:", "sentAt": "2019-10-29T10:32:53.377Z" }
+    { "id": 1, "username": "Baptiste", "body": "Hello there ! :)" },
+    { "id": 2, "username": "John", "body": "J'ai faim :hamburger:" }
   ]
 }
