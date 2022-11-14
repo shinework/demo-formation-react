@@ -1,19 +1,19 @@
 {
-  "messages": [
-    {
-      "id": 1,
-      "username": "Baptiste",
-      "body": "Hello there!"
-    },
-    {
-      "id": 2,
-      "username": "John",
-      "body": "J'ai faim :hamburger:"
-    },
-    {
-      "id": 3,
-      "username": "Doe",
-      "body": "Lorem ipsum dolores"
-    }
-  ]
+   "messages":[
+      {
+         "id":1,
+         "username":"Baptiste",
+         "body":"Hello there!"
+      },
+      {
+         "id":2,
+         "username":"John",
+         "body":"J'ai faim :hamburger:"
+      },
+      {
+         "id":3,
+         "username":"Doe",
+         "body":"Lorem ipsum dolores"
+      }
+   ]
 }
