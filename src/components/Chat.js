@@ -14,7 +14,13 @@ const chatStyle = {
 const Chat = () => {
   return (
     <div style={chatStyle}>
-      <div style={{ paddingLeft: 10, paddingTop: 10, fontSize: 30 }}>
+      <div
+        style={{
+          paddingLeft: 10,
+          paddingTop: 10,
+          fontSize: 30,
+        }}
+      >
         👅 <b>JoliChat</b>
       </div>
       <MessageList />
