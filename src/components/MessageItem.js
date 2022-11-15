@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Twemoji } from "react-emoji-render";
 
 const MessageItem = ({ message }) => {
   return (
@@ -12,7 +13,9 @@ const MessageItem = ({ message }) => {
       }}
     >
       <small>{message.username}</small>
-      <div>{message.body}</div>
+      <div>
+        <Twemoji text={message.body} />
+      </div>
     </li>
   );
 };

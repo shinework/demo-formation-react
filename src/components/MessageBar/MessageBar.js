@@ -6,31 +6,33 @@ const MessageBar = ({ handleSendMessage }) => {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div style={{ display: "flex", padding: 10 }}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
+    <>
+      <div style={{ display: "flex", padding: 10 }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
 
-          if (!message) {
-            setHasError(true);
-          } else {
-            handleSendMessage(message);
-            setMessage("");
-          }
-        }}
-      >
-        <Input
-          value={message}
-          hasError={hasError}
-          onChange={(event) => {
-            setHasError(false);
-            setMessage(event.target.value);
+            if (!message) {
+              setHasError(true);
+            } else {
+              handleSendMessage(message);
+              setMessage("");
+            }
           }}
-          placeholder="Votre message"
-        />
-        <Button>Envoyer</Button>
-      </form>
-    </div>
+        >
+          <Input
+            value={message}
+            hasError={hasError}
+            onChange={(event) => {
+              setHasError(false);
+              setMessage(event.target.value);
+            }}
+            placeholder="Votre message"
+          />
+          <Button>Envoyer</Button>
+        </form>
+      </div>
+    </>
   );
 };
 
