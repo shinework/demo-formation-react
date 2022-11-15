@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const inputStyle = {
   borderRadius: 10,
@@ -21,11 +21,28 @@ const buttonStyle = {
   backgroundColor: "transparent",
 };
 
-const MessageBar = () => {
+const MessageBar = ({ handleSendMessage }) => {
+  const [message, setMessage] = useState("");
+
   return (
     <div style={{ display: "flex", padding: 10 }}>
-      <input style={inputStyle} placeholder="Votre message" />
-      <button style={buttonStyle}>Envoyer</button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSendMessage(message);
+          setMessage("");
+        }}
+      >
+        <input
+          value={message}
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+          style={inputStyle}
+          placeholder="Votre message"
+        />
+        <button style={buttonStyle}>Envoyer</button>
+      </form>
     </div>
   );
 };

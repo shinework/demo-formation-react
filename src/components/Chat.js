@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MessageBar from "./MessageBar";
 import MessageList from "./MessageList";
 
@@ -12,6 +13,18 @@ const chatStyle = {
 };
 
 const Chat = () => {
+  const [messages, setMessages] = useState([]);
+
+  const handleSendMessage = (messageBody) => {
+    const message = {
+      id: messages.length + 1,
+      username: "Baptiste",
+      body: messageBody,
+    };
+
+    setMessages([...messages, message]);
+  };
+
   return (
     <div style={chatStyle}>
       <div
@@ -23,8 +36,14 @@ const Chat = () => {
       >
         👅 <b>JoliChat</b>
       </div>
-      <MessageList />
-      <MessageBar />
+      {messages.length > 0 ? (
+        <MessageList messages={messages} />
+      ) : (
+        <div style={{ marginTop: 10, padding: 6, borderRadius: 5 }}>
+          Aucun message
+        </div>
+      )}
+      <MessageBar handleSendMessage={handleSendMessage} />
     </div>
   );
 };
