@@ -1,20 +1,10 @@
-import { useState } from "react";
 import MessageBar from "./MessageBar/MessageBar";
 import MessageList from "./MessageList";
 import chatStyles from "./Chat.module.css";
+import { useSelector } from "react-redux";
 
 const Chat = () => {
-  const [messages, setMessages] = useState([]);
-
-  const handleSendMessage = (messageBody) => {
-    const message = {
-      id: messages.length + 1,
-      username: "Baptiste",
-      body: messageBody,
-    };
-
-    setMessages([...messages, message]);
-  };
+  const messages = useSelector((state) => state.app.messages);
 
   return (
     <div className={chatStyles.container}>
@@ -34,7 +24,7 @@ const Chat = () => {
           Aucun message
         </div>
       )}
-      <MessageBar handleSendMessage={handleSendMessage} />
+      <MessageBar />
     </div>
   );
 };

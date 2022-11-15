@@ -1,9 +1,23 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addMessage } from "../../core/reducers/app";
 import { Button, Input } from "./elements";
 
-const MessageBar = ({ handleSendMessage }) => {
+const MessageBar = () => {
+  const dispatch = useDispatch();
+
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
+
+  const handleSendMessage = (body) => {
+    const message = {
+      id: Math.floor(Math.random() * 1000000),
+      username: "Baptiste",
+      body: body,
+    };
+
+    dispatch(addMessage(message));
+  };
 
   return (
     <>
