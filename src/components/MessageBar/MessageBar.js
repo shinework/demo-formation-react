@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AppContext } from "../../core/contexts/app-context";
 import { postMessage } from "../../core/reducers/app";
 import { Button, Input } from "./elements";
 
 const MessageBar = () => {
   const dispatch = useDispatch();
+  const { username } = useContext(AppContext);
 
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
@@ -15,7 +17,7 @@ const MessageBar = () => {
   const handleSendMessage = (body) => {
     const message = {
       id: Math.floor(Math.random() * 1000000),
-      username: "Baptiste",
+      username: username,
       body: body,
     };
 
