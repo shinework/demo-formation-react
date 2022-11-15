@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MessageBar from "./MessageBar";
+import MessageBar from "./MessageBar/MessageBar";
 import MessageList from "./MessageList";
 import chatStyles from "./Chat.module.css";
 
