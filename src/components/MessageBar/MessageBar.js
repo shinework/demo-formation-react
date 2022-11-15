@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addMessage } from "../../core/reducers/app";
+import { useDispatch, useSelector } from "react-redux";
+import { postMessage } from "../../core/reducers/app";
 import { Button, Input } from "./elements";
 
 const MessageBar = () => {
@@ -8,6 +8,9 @@ const MessageBar = () => {
 
   const [message, setMessage] = useState("");
   const [hasError, setHasError] = useState(false);
+  const hasMessageCreating = useSelector(
+    (state) => state.app.hasMessageCreating
+  );
 
   const handleSendMessage = (body) => {
     const message = {
@@ -16,7 +19,7 @@ const MessageBar = () => {
       body: body,
     };
 
-    dispatch(addMessage(message));
+    dispatch(postMessage(message));
   };
 
   return (
@@ -43,7 +46,12 @@ const MessageBar = () => {
             }}
             placeholder="Votre message"
           />
-          <Button>Envoyer</Button>
+          <Button
+            style={{ opacity: hasMessageCreating ? 0.5 : 1 }}
+            disabled={hasMessageCreating}
+          >
+            Envoyer
+          </Button>
         </form>
       </div>
     </>
