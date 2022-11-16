@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../core/contexts/app-context";
 
@@ -21,7 +22,7 @@ const Login = () => {
           navigate("/chat");
         }}
       >
-        Login
+        <FormattedMessage id="login" />
       </button>
     </div>
   );

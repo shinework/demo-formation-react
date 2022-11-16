@@ -4,10 +4,13 @@ import chatStyles from "./Chat.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { GithubPicker } from "react-color";
 import { fetchMessages, updateColor } from "../core/reducers/app";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
+import { AppContext } from "../core/contexts/app-context";
 
 const Chat = () => {
   const dispatch = useDispatch();
+  const { username, setLocale, locale } = useContext(AppContext);
 
   const messages = useSelector((state) => state.app.messages);
   const themeColor = useSelector((state) => state.app.themeColor);
@@ -18,7 +21,7 @@ const Chat = () => {
   useEffect(() => {
     console.log("on mount");
     dispatch(fetchMessages());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div
@@ -37,6 +40,8 @@ const Chat = () => {
       >
         👅 <b>JoliChat</b>
       </div>
+
+      <FormattedMessage id="hello" values={{ username }} />
 
       {hasMessagesFetching ? (
         <div style={{ marginTop: 10, padding: 6, borderRadius: 5 }}>
@@ -60,6 +65,15 @@ const Chat = () => {
           dispatch(updateColor(hex));
         }}
       />
+      <select
+        value={locale}
+        onChange={(e) => {
+          setLocale(e.target.value);
+        }}
+      >
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+      </select>
     </div>
   );
 };
